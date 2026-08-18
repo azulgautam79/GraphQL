@@ -21,7 +21,7 @@ export class CourseResolver {
     }
 
     //! Find Courses by id
-    @Query(() => [Course], { nullable: true })
+    @Query(() => Course, { nullable: true })
     course(@Args('id', { type: () => Int }) id: number) {
         return this.courseService.findOne(id);
     }

@@ -20,7 +20,7 @@ export class TeacherResolver {
     }
 
     //! Find Teacher by id
-    @Query(() => [Teacher], { nullable: true })
+    @Query(() => Teacher, { nullable: true })
     teacher(@Args('id', { type: () => Int }) id: number) {
         return this.teacherService.findOne(id);
     }
