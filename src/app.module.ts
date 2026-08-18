@@ -21,6 +21,7 @@ import { EnrollmentModule } from './enrollment/enrollment.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
       graphiql: true,
+      introspection: true,
     }),
     StudentModule,
     ProfileModule,
