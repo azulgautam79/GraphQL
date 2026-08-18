@@ -1,0 +1,13 @@
+We'll build the project feature by feature:
+
+✅ Part 1: Student + Profile (1:1)
+⬜ Part 2: Teacher + Course (1:N)
+⬜ Part 3: Course + Lesson (1:N)
+⬜ Part 4: Lesson + Comment (1:N)
+⬜ Part 5: Student ↔ Course (N:M)
+⬜ Part 6: Course ↔ Tag (N:M)
+⬜ Part 7: Filtering and pagination
+⬜ Part 8: JWT authentication
+⬜ Part 9: Authorization (guards and roles)
+⬜ Part 10: DataLoader to solve the N+1 query problem
+⬜ Part 11: Deployment to Vercel with a hosted PostgreSQL database

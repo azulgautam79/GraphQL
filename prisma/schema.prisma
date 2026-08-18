@@ -1,0 +1,64 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Student {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+
+  profile Profile?
+
+  teacherId Int?
+  teacher   Teacher? @relation(fields: [teacherId], references: [id])
+
+  // courses Course[]
+  enrollments Enrollment[]
+}
+
+model Profile {
+  id  Int    @id @default(autoincrement())
+  bio String
+
+  studentId Int     @unique
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Teacher {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+
+  students Student[]
+}
+
+model Course {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+
+  // students Student[]
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  studentId Int
+  courseId  Int
+
+  semester String
+  grade    String?
+
+  enrolledAt DateTime @default(now())
+
+  student Student @relation(fields: [studentId], references: [id])
+  course  Course  @relation(fields: [courseId], references: [id])
+
+  @@id([studentId, courseId])
+}
