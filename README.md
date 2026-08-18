@@ -47,10 +47,23 @@ For example:
 ```graphql
 query {
   students {
-    name
-    email
+    edges {
+      node {
+        id
+        name
+        email
+      }
+    }
+    totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
   }
 }
+
 ```
 
 The API returns only the requested fields.
